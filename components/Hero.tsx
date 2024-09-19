@@ -3,6 +3,7 @@ import MagicButton from './ui/MagicButton'
 import { Spotlight } from './ui/Spotlight'
 import { TextGenerateEffect } from './ui/textGenerateEffect'
 import { FaLocationArrow } from "react-icons/fa";
+import Image from 'next/image';
 
 
 
@@ -15,7 +16,12 @@ const Hero = () => {
                 <Spotlight className='-top-28 -left-80 h-[80vh] w-[50vh] ' fill='blue'/>
           </div>
           <div className="h-full w-full dark:bg-black-100 bg-white dark:bg-grid-white/[0.05] bg-grid-black/[0.2] flex items-center justify-center relative overflow-hidden">
-            <img src="/b11.jpeg" alt="" className='object-cover w-full h-full mask-image-[linear-gradient(to_top, transparent, black, transparent)]' />
+            <img
+               src="/b11.jpeg" 
+               alt='b11' 
+               className='object-cover w-full h-full mask-image-[linear-gradient(to_top, transparent, black, transparent)]'
+               width={1920}  
+               height={1080}  />
 
   
               <div className='absolute top-[60%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col text-center items-center justify-center'>
