@@ -19,7 +19,7 @@ const Experience = () => {
                     className='flex-1 text-white borde-neutral-200 dark:border-slate-800'
                 >
                     <div className='flex lg:flex-row flex-col lg:items-center p-3 py-6 md:p5 lg:p10 gap-2'>
-                        <img src={card.thumbnail} alt={card.thumbnail} className=" lg:w-32 md:w-20 w-16"/>
+                        <Image src={card.thumbnail} alt={card.thumbnail} width={800} height={500} className=" lg:w-32 md:w-20 w-16"/>
                     </div>
                     <div className='lg:ms-5'>
                         <h1 className='text-start test-xl md:text-2xl font-bold'>

@@ -25,42 +25,17 @@ export const InfiniteMovingCards = ({
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
 
-  useEffect(() => {
-    addAnimation();
-  }, []);
-  const [start, setStart] = useState(false);
-  function addAnimation() {
-    if (containerRef.current && scrollerRef.current) {
-      const scrollerContent = Array.from(scrollerRef.current.children);
-
-      scrollerContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true);
-        if (scrollerRef.current) {
-          scrollerRef.current.appendChild(duplicatedItem);
-        }
-      });
-
-      getDirection();
-      getSpeed();
-      setStart(true);
-    }
-  }
-  const getDirection = () => {
+  const getDirection = React.useCallback(() => {
     if (containerRef.current) {
       if (direction === "left") {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "forwards"
-        );
+        containerRef.current.style.setProperty("--animation-direction", "forwards");
       } else {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "reverse"
-        );
+        containerRef.current.style.setProperty("--animation-direction", "reverse");
       }
     }
-  };
-  const getSpeed = () => {
+  }, [direction]);
+  
+  const getSpeed = React.useCallback(() => {
     if (containerRef.current) {
       if (speed === "fast") {
         containerRef.current.style.setProperty("--animation-duration", "20s");
@@ -70,7 +45,35 @@ export const InfiniteMovingCards = ({
         containerRef.current.style.setProperty("--animation-duration", "80s");
       }
     }
-  };
+  }, [speed]);
+
+  
+
+  const addAnimation = React.useCallback(() => {
+    if (containerRef.current && scrollerRef.current) {
+      const scrollerContent = Array.from(scrollerRef.current.children);
+  
+      scrollerContent.forEach((item) => {
+        const duplicatedItem = item.cloneNode(true);
+        if (scrollerRef.current) {
+          scrollerRef.current.appendChild(duplicatedItem);
+        }
+      });
+  
+      getDirection();
+      getSpeed();
+      setStart(true);
+    }
+  }, [getDirection, getSpeed]); 
+  
+  useEffect(() => {
+    addAnimation();
+  }, [addAnimation]); 
+  
+  
+  const [start, setStart] = useState(false);
+  
+  
   return (
     <div
       ref={containerRef}
@@ -108,7 +111,7 @@ export const InfiniteMovingCards = ({
                 <div className="relative z-20 mt-6 flex flex-row items-center">
                   <span className="flex flex-col gap-1">
                     <div className="me-3">
-                      <img src={item.profileImage} alt={item.name} className="w-12 h-12 rounded-full" />
+                      <Image src={item.profileImage} alt={item.name} width={800} height={500} className="w-12 h-12 rounded-full" />
                     </div>
                     <div className="flex flex-col gap-1">
                       <span className="text-xl leading-[1.6] text-white font-bold">

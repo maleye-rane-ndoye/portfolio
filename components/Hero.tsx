@@ -16,7 +16,7 @@ const Hero = () => {
                 <Spotlight className='-top-28 -left-80 h-[80vh] w-[50vh] ' fill='blue'/>
           </div>
           <div className="h-full w-full dark:bg-black-100 bg-white dark:bg-grid-white/[0.05] bg-grid-black/[0.2] flex items-center justify-center relative overflow-hidden">
-            <img
+            <Image
                src="/b11.jpeg" 
                alt='b11' 
                className='object-cover w-full h-full mask-image-[linear-gradient(to_top, transparent, black, transparent)]'
