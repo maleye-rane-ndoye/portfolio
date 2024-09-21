@@ -271,9 +271,3 @@ export const navItems = [
       img: "/link.svg",
     },
   ];
-
-
-  // const profile = [
-
-  //   
-  // ]
